@@ -1,11 +1,13 @@
-Git bindings for go. 
+# Git bindings for go. 
+
 Just wraps commandline git using exec.
-Doesnt handle all errors well.
 
 ``` go
 import "github.com/srijak/gitgo"
+
 .
 .
+
 g := NewGit(dir)
 // initialize if you want to create a new git repo
 g.Init()
@@ -19,7 +21,7 @@ files, _ := g.ListFiles()  => ["filename.0"]
 // get the current commitHash
 hash, _ := g.GetCurrentCommitHash()  => "mADEupHash"
 
-// add a new file to the repo.
+// add a couple of new files to the repo.
 g.WriteFile("filename.1", "contents of the file")
 g.WriteFile("filename.2", "contents of the file")
 g.CommitAll("added filename.1,2")
@@ -31,3 +33,10 @@ files, _ := g.ListFiles()  => ["filename.0","filename.1", "filename.2"]
 files, _ = get.ListFilesChangedSince(hash) => ['filename.1', "filename.2"]
 
 ```
+
+
+TODO:
+
+* Support update, delete, branches
+* Don't just ignore most errors.
+* Add support for chaining.
